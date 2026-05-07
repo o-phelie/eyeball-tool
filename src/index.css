@@ -1,0 +1,371 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* New Warm Pastel Color Palette */
+    --primary: 10 82% 78%;
+    --primary-foreground: 25 20% 20%;
+    --secondary: 23 100% 77%;
+    --secondary-foreground: 25 20% 20%;
+    --accent: 300 36% 74%;
+    --accent-foreground: 25 20% 20%;
+    --tertiary: 266 56% 80%;
+    --tertiary-foreground: 25 20% 20%;
+    --highlight: 41 82% 78%;
+    --highlight-foreground: 25 20% 20%;
+    --success: 122 38% 84%;
+    --success-foreground: 25 20% 20%;
+    
+    /* Warm Pastel Color Tokens for Pomodoro Modal */
+    --peach: 10 82% 78%;
+    --soft-purple: 300 36% 74%;
+    --golden-yellow: 41 82% 78%;
+    --mint-green: 122 38% 84%;
+    
+    /* Primary Action Color - Warm Peach */
+    --navy-accent: 10 82% 78%;
+    --navy-accent-foreground: 25 20% 20%;
+    
+    /* Unified Box Background - Semi-transparent warm white */
+    --box-background: 30 50% 97%;
+    --box-foreground: 25 20% 20%;
+    --box-border: 30 40% 88%;
+    
+    /* Work Session Theme - Warm and Focused */
+    --work-bg: 10 60% 95%;
+    --work-foreground: 25 20% 20%;
+    --work-accent: 10 82% 78%;
+    --work-accent-foreground: 25 20% 20%;
+    --work-border: 10 40% 88%;
+    --work-card: 10 50% 96%;
+    
+    /* Rest Session Theme - Calm Mint and Purple */
+    --rest-bg: 122 40% 94%;
+    --rest-foreground: 25 20% 20%;
+    --rest-accent: 266 56% 80%;
+    --rest-accent-foreground: 25 20% 20%;
+    --rest-border: 122 30% 88%;
+    --rest-card: 122 35% 95%;
+    
+    /* Core UI Tokens */
+    --background: 30 40% 98%;
+    --foreground: 25 20% 20%;
+    --card: 30 50% 97%;
+    --card-foreground: 25 20% 20%;
+    --popover: 30 50% 97%;
+    --popover-foreground: 25 20% 20%;
+    --muted: 30 30% 92%;
+    --muted-foreground: 25 15% 40%;
+    --destructive: 0 70% 65%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 30% 88%;
+    --input: 30 30% 88%;
+    --ring: 10 82% 78%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    /* Global anti-aliasing for smooth rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  body {
+    @apply text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    
+    /* Enhanced image rendering for smooth background */
+    image-rendering: auto;
+    image-rendering: -webkit-optimize-contrast;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    /* Smooth font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* GPU acceleration for smoother rendering */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Apply smooth rendering to all images and backgrounds */
+  img, 
+  svg,
+  [style*="background-image"] {
+    image-rendering: auto;
+    image-rendering: -webkit-optimize-contrast;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Dynamic theme transitions */
+  .theme-transition {
+    transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Modal backdrop blur effect */
+.modal-backdrop {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass Morphism Effects */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(245, 168, 155, 0.15),
+              0 4px 16px rgba(212, 165, 212, 0.1);
+}
+
+.glass-morphism-light {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(245, 168, 155, 0.2);
+}
+
+.glass-peach {
+  background: rgba(245, 168, 155, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 168, 155, 0.3);
+}
+
+.glass-purple {
+  background: rgba(212, 165, 212, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 165, 212, 0.3);
+}
+
+.glass-yellow {
+  background: rgba(245, 216, 155, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 216, 155, 0.3);
+}
+
+.glass-mint {
+  background: rgba(200, 230, 201, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(200, 230, 201, 0.4);
+}
+
+/* Preset Button Styles */
+.preset-button {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  color: hsl(var(--primary-foreground));
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(245, 168, 155, 0.2), 0 2px 4px -1px rgba(245, 168, 155, 0.1);
+  overflow: hidden;
+}
+
+.preset-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.preset-button:hover::before {
+  opacity: 1;
+}
+
+.preset-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(245, 168, 155, 0.25), 0 4px 6px -2px rgba(245, 168, 155, 0.15);
+}
+
+.preset-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px -1px rgba(245, 168, 155, 0.2), 0 2px 4px -1px rgba(245, 168, 155, 0.1);
+}
+
+.preset-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.preset-button:hover .preset-icon {
+  background: rgba(255, 255, 255, 0.5);
+  transform: rotate(5deg) scale(1.1);
+}
+
+/* Custom scrollbar with warm tones */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(245, 168, 155, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 168, 155, 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 168, 155, 0.6);
+}
+
+/* Global smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Remove transitions from motion elements to avoid conflicts */
+[data-framer-component-type] * {
+  transition: none !important;
+}
+
+/* Pomodoro-specific utilities */
+.work-theme {
+  background-color: hsl(var(--work-bg));
+  color: hsl(var(--work-foreground));
+  border-color: hsl(var(--work-border));
+}
+
+.rest-theme {
+  background-color: hsl(var(--rest-bg));
+  color: hsl(var(--rest-foreground));
+  border-color: hsl(var(--rest-border));
+}
+
+/* Text readability enhancements */
+.text-shadow-soft {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-strong {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Focus states for better accessibility */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Input styling */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Blur effect transitions */
+.blur-sm {
+  filter: blur(4px);
+  transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glass morphism effect for cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Soft shadow for elevated elements */
+.shadow-soft {
+  box-shadow: 0 4px 20px rgba(245, 168, 155, 0.15),
+              0 2px 8px rgba(212, 165, 212, 0.1);
+}
+
+/* Smooth animation utilities */
+.animate-smooth {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Enhanced smooth rendering for all elements */
+canvas, video {
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Optimize gradient rendering for background images */
+.gradient-smooth {
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.05));
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Ensure all divs with background images render smoothly */
+div[style*="background-image"] {
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}

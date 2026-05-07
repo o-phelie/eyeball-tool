@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"^vite$|^node$\")",
+      "Bash(command -v npx)",
+      "Bash(command -v yarn)",
+      "Bash(command -v bun)",
+      "Bash(command -v pnpm)"
+    ]
+  }
+}
